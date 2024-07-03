@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadingSFX: {fileID: 0}
-  shootingSFX: {fileID: 0}
+  shootingSFX: {fileID: 8300000, guid: 1b727291087cbd2408641b163b9b3019, type: 3}
   reloadTime: 3.8
   fireTime: 0.1666667
   holsterTime: 0.834

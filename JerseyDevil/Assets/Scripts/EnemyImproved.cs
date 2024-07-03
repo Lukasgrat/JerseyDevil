@@ -65,11 +65,6 @@ public class EnemyImproved : MonoBehaviour
             GetComponent<NavMeshAgent>().enabled = false;
         }
         playerAnimator = GetComponent<Animator>();
-        GameObject gm = GameObject.FindGameObjectWithTag("EnemyCount");
-        if (gm != null && gm.TryGetComponent(out EnemyCounter counter)) 
-        {
-            counter.AddEnemy();
-        }
     }
 
     // Update is called once per frame
@@ -260,6 +255,7 @@ public class EnemyImproved : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
+        Debug.Log("Taking damage");
         if (isDead) { return; }
 
         curhealth -= damage;

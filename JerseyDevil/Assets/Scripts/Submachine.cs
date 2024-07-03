@@ -23,7 +23,8 @@ public class Submachine : MonoBehaviour, IGUN
     int curAmmo;
     TMP_Text ammoText;
     MouseLook playerHead;
-    float recoilAimOffset = 5f;
+    float MAXOFFSET = 25;
+    float recoilAimOffset = 0f;
     float startFOV;
     public float decreaseInFOV = 20f;
     bool isZooming = false;
@@ -69,7 +70,7 @@ public class Submachine : MonoBehaviour, IGUN
 
 
         GameObject.FindAnyObjectByType<PlayerController>().sendZoomingSignal(isZooming);
-        recoilAimOffset = Mathf.Max(recoilAimOffset - Time.deltaTime, 5);
+        recoilAimOffset = Mathf.Max(recoilAimOffset - (MAXOFFSET / 3 * Time.deltaTime), 2);
     }
 
     public void Initialize(MouseLook PS, TMP_Text ammotext)
@@ -175,7 +176,7 @@ public class Submachine : MonoBehaviour, IGUN
                 enemyHead.enemy.TakeDamage(10);
             }
         }
-        recoilAimOffset = Mathf.Min(recoilAimOffset + 5, 45);
+        recoilAimOffset = Mathf.Min(recoilAimOffset + MAXOFFSET / 7, MAXOFFSET);
         curAmmo -= 1;
         UpdateAmmoText();
         FindObjectOfType<ReticleLogic>().InitiateReticle(fireTime);

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyDisplayName
   - EnemyHealthSlider
+  - EnemyCount
   layers:
   - Default
   - TransparentFX
