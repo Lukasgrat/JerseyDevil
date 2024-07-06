@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,6 +12,7 @@ public class EnemyImproved : MonoBehaviour
     {
         idle,
         patrol,
+        chasing,
         shooting,
         dead,
     }
@@ -22,6 +24,7 @@ public class EnemyImproved : MonoBehaviour
     public bool isDead = false;
     public bool canShoot = false; // New variable to control shooting
     public float shootingCooldown = 1;
+    public int enemyDamageAmount = 5;
     float shootingTime = 0;
     public float seeingRadius = 5;
     public float hearingRadius = 10;
@@ -31,7 +34,7 @@ public class EnemyImproved : MonoBehaviour
     public FSMStates currentState;
     public GameObject[] wanderPoints;
     public GameObject gun;
-
+    Vector3 lastKnownPlayerLocation;
     NavMeshAgent agent;
 
     public Animator playerAnimator;
@@ -86,6 +89,9 @@ public class EnemyImproved : MonoBehaviour
             case FSMStates.shooting:
                 UpdateShootState();
                 break;
+            case FSMStates.chasing:
+                UpdateChasingState();
+                break;
             case FSMStates.dead:
                 UpdateDeadState();
                 break;
@@ -106,7 +112,6 @@ public class EnemyImproved : MonoBehaviour
     void UpdateIdleState()
     {
         playerAnimator.SetInteger("animState", 0);
-        gun.SetActive(false);
         if (distanceToPlayer <= seeingRadius
            && IsPlayerInClearFOV())
         {
@@ -114,11 +119,36 @@ public class EnemyImproved : MonoBehaviour
         }
     }
 
+    void UpdateChasingState()
+    {
+        playerAnimator.SetInteger("animState", 1);
+        nextDestination = lastKnownPlayerLocation;
+        if (Vector3.Distance(transform.position, nextDestination) < 3)
+        {
+            if (this.wanderPoints.Length > 1)
+            {
+                FindNextPoint();
+                currentState = FSMStates.patrol;
+            }
+            else 
+            {
+                currentState = FSMStates.idle;
+            }
+        }
+        else if (distanceToPlayer <= seeingRadius
+        && IsPlayerInClearFOV())
+        {
+            currentState = FSMStates.shooting;
+        }
+
+        FaceTarget(nextDestination);
+        agent.SetDestination(nextDestination);
+    }
+
 
     void UpdatePatrolState()
     {
         playerAnimator.SetInteger("animState", 1);
-        gun.SetActive(false);
 
         if(Vector3.Distance(transform.position, nextDestination) < 3)
         {
@@ -152,17 +182,21 @@ public class EnemyImproved : MonoBehaviour
         }
 
         if (Vector3.Distance(player.transform.position, transform.position) > (seeingRadius + hearingRadius) / 2
-            && !IsPlayerInClearFOV()
+            || !IsPlayerInClearFOV()
         )
         {
+            agent.isStopped = false;
             if (this.wanderPoints.Length > 1)
             {
-                currentState = FSMStates.patrol;
+                currentState = FSMStates.chasing;
+                lastKnownPlayerLocation = player.transform.position;
             }
-            else 
+            else
             {
-                currentState = FSMStates.idle;
+                lastKnownPlayerLocation = player.transform.position;
+                currentState = FSMStates.chasing;
             }
+            return;
         }
         RaycastHit[] hits;
         if (head != null)
@@ -255,7 +289,6 @@ public class EnemyImproved : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
-        Debug.Log("Taking damage");
         if (isDead) { return; }
 
         curhealth -= damage;
@@ -295,7 +328,7 @@ public class EnemyImproved : MonoBehaviour
 
         if (Random.Range(0, 5) < 2)
         {
-            player.GetComponent<PlayerController>().TakeDamage(15);
+            player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
         }
 
         shootingTime = shootingCooldown;
@@ -304,7 +337,7 @@ public class EnemyImproved : MonoBehaviour
     public void OnPlayerFire() 
     {
         if (currentState == FSMStates.shooting || isDead) return;
-
+        Debug.Log(Vector3.Distance(player.transform.position, transform.position));
         if (Vector3.Distance(player.transform.position, transform.position) <= hearingRadius) 
         {
             GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, hearingRadius));
@@ -340,15 +373,11 @@ public class EnemyImproved : MonoBehaviour
         {
             if(Physics.Raycast(head.position, directionToPlayer, out hit, seeingRadius))
             {
-                if(hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Player"))
                 {
-                    print("Player in sight");
                     return true;
                 }
-
-                return false;
             }
-            return false;
         }
         return false;
     }

@@ -16,7 +16,7 @@ public class EnemyHead : MonoBehaviour
     {
         if (enemy.currentState == EnemyImproved.FSMStates.dead) 
         {
-            this.gameObject.SetActive(false);
+            GetComponent<CapsuleCollider>().enabled = false;
         }
     }
 }

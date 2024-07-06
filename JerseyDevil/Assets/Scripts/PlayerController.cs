@@ -14,7 +14,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10;
     public float airControl = 10f;
     public float health = 100;
+    public float stamina= 100;
     public Slider healthSlider;
+    public Slider staminaSlider;
+    public bool isSprinting  = false;
+
 
     bool isZooming = false;
 
@@ -33,11 +37,36 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (IsDead()) return;
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
         input *= moveSpeed;
+
+
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 10)
+        {
+            isSprinting = true;
+        }
+        if (Input.GetButton("Fire1") || Input.GetButton("Fire2") || stamina == 0 || (moveVertical == 0 && moveHorizontal == 0))
+        {
+            isSprinting = false;
+        }
+
+
+        if (isSprinting) 
+        {
+            stamina = Mathf.Max(stamina - Time.deltaTime * 20 , 0);
+            input *= 2;
+        }
+        else
+        {
+            stamina = Mathf.Min(stamina + Time.deltaTime * 10, 100);
+        }
+
+        staminaSlider.value = stamina;
+
         if (isZooming) 
         {
             input /= 2;
@@ -59,6 +88,7 @@ public class PlayerController : MonoBehaviour
             input.y = moveDirection.y;
             moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
         }
+
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);

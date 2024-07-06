@@ -2095,8 +2095,8 @@ Transform:
   m_GameObject: {fileID: 1138993335355214246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.634, y: 0.001, z: -0.76}
-  m_LocalScale: {x: 0.5983596, y: 1.1109976, z: 0.69590616}
+  m_LocalPosition: {x: -0.687, y: 0.001, z: -0.76}
+  m_LocalScale: {x: 0.633603, y: 1.1201465, z: 0.736895}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3350429681970572490}
@@ -26375,6 +26375,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e5d76ed9044cb8643b74b4a08a472dcf, type: 3}
       propertyPath: m_Name
       value: Gangster
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5d76ed9044cb8643b74b4a08a472dcf, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1330755669629619180, guid: e5d76ed9044cb8643b74b4a08a472dcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -23,13 +23,14 @@ public class Submachine : MonoBehaviour, IGUN
     int curAmmo;
     TMP_Text ammoText;
     MouseLook playerHead;
-    float MAXOFFSET = 25;
+    float MAXOFFSET = 50;
     float recoilAimOffset = 0f;
     float startFOV;
     public float decreaseInFOV = 20f;
     bool isZooming = false;
     public GameObject bulletPrefab;
     public GameObject bulletTransformParent;
+    List<Vector3> shots = new List<Vector3>();
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +45,8 @@ public class Submachine : MonoBehaviour, IGUN
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire2") && !FindAnyObjectByType<PlayerController>().IsDead() && (curState == Gunplay.Readied 
-            || (sightingTimer == SIGHTINGTIME && curState == Gunplay.Firing)))
+        if ( (Input.GetButton("Fire2") || (sightingTimer > 0 && Input.GetButton("Fire1")))
+            && !FindAnyObjectByType<PlayerController>().IsDead() && (curState == Gunplay.Readied || curState == Gunplay.Firing))
         {
             sightingTimer = Mathf.Min(sightingTimer + Time.deltaTime, SIGHTINGTIME);
         }
@@ -153,16 +154,26 @@ public class Submachine : MonoBehaviour, IGUN
     private IEnumerator shootingEffects()
     {
         yield return new WaitForSeconds(.0334f);
+        float deviationAmount = Random.Range(0, recoilAimOffset);
+        if (sightingTimer == SIGHTINGTIME) 
+        {
+            deviationAmount /= 2;
+        }
         Vector3 currentForward = playerHead.transform.forward;
-        float split = Random.Range(-recoilAimOffset, recoilAimOffset);
-        Vector3 randomRot =  Quaternion.AngleAxis(recoilAimOffset - split, Vector3.right)  * Quaternion.AngleAxis(split, Vector3.up) * currentForward;
+        float split = Random.Range(-deviationAmount, deviationAmount);
+        Vector3 randomRot =  Quaternion.AngleAxis(deviationAmount - split, Vector3.right)  * Quaternion.AngleAxis(split, Vector3.up) * currentForward;
+        shots.Add(randomRot);
         RaycastHit[] hits = Physics.RaycastAll(playerHead.transform.position,
           randomRot, 600);
 
         GameObject newBullet = Instantiate(bulletPrefab, bulletTransformParent.transform);
         newBullet.GetComponent<Rigidbody>().AddForce(bulletTransformParent.transform.up * 150 * Random.Range(.7f, 1.1f) + bulletTransformParent.transform.right * 200 *  Random.Range(.7f, 1.1f));
-        Debug.Log(newBullet.transform.rotation.eulerAngles);
         newBullet.GetComponent<Rigidbody>().AddTorque(bulletTransformParent.transform.forward * 3000 + bulletTransformParent.transform.up * 3000);
+
+        foreach (EnemyImproved enemy in GameObject.FindObjectsOfType<EnemyImproved>()) 
+        {
+            enemy.OnPlayerFire();
+        }
         newBullet.transform.parent = null;
         if (hits.Length > 0)
         {

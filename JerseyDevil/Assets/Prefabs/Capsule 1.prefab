@@ -274,7 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6af0800296dc65498e35823151376d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunAnimator: {fileID: 2604986726677295819}
   coolDownDynamiteTime: 5
   throwingForce: 900
   curState: 0
@@ -395,7 +394,7 @@ GameObject:
   - component: {fileID: 1391706332601899940}
   - component: {fileID: 3778170759812254872}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Capsule 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,7 +507,10 @@ MonoBehaviour:
   moveSpeed: 10
   airControl: 10
   health: 100
+  stamina: 100
   healthSlider: {fileID: 0}
+  staminaSlider: {fileID: 0}
+  isSprinting: 0
   deathTimer: 2
   deathText: {fileID: 0}
 --- !u!143 &3778170759812254872
@@ -533,7 +535,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -613,11 +615,6 @@ PrefabInstance:
 --- !u!4 &75653454778240684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2626420538960923279, guid: 6f9a32c957756e64faaa73952b31031c, type: 3}
-  m_PrefabInstance: {fileID: 2701647378327847971}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2604986726677295819 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 97082866536412904, guid: 6f9a32c957756e64faaa73952b31031c, type: 3}
   m_PrefabInstance: {fileID: 2701647378327847971}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4650694069732414532 stripped

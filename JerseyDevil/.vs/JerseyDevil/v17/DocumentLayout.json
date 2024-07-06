@@ -3,11 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scripts\\enemyhead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyhead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scripts\\enemyimproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyimproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scripts\\submachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\submachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scripts\\playershooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playershooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -22,37 +38,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyHead.cs",
+              "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyHead.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyHead.cs",
+              "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyHead.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyHead.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-04T14:48:03.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T03:26:09.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerShooting.cs",
+              "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerShooting.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerShooting.cs",
+              "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerShooting.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerShooting.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAUwH8AAABdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T03:10:12.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "EnemyImproved.cs",
+              "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyImproved.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyImproved.cs",
+              "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyImproved.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyImproved.cs",
+              "ViewState": "AQIAACQBAAAAAAAAAAAiwEMBAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-02T16:49:26.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "MouseLook.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\MouseLook.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MouseLook.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\MouseLook.cs",
               "RelativeToolTip": "Assets\\Scripts\\MouseLook.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-27T00:17:51.817Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Submachine.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\Submachine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Submachine.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\Submachine.cs",
               "RelativeToolTip": "Assets\\Scripts\\Submachine.cs",
-              "ViewState": "AQIAAHUAAAAAAAAAAAAiwJQAAAA3AAAA",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAowJ8AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-27T00:13:36.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "explosionLogic.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\explosionLogic.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\explosionLogic.cs",
