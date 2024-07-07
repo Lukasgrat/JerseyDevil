@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         if (isSprinting) 
         {
             stamina = Mathf.Max(stamina - Time.deltaTime * 20 , 0);
-            input *= 2;
+            input  = input * 5 / 3;
         }
         else
         {
