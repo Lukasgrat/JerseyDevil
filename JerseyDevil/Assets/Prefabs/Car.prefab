@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1715
+  m_VersionIndex: 1718
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 144
+  m_VersionIndex: 147
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5126,7 +5126,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1915
+  m_VersionIndex: 1918
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7206,7 +7206,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1715
+  m_VersionIndex: 1718
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9286,7 +9286,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1915
+  m_VersionIndex: 1918
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9789,6 +9789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1576841750411326447}
+  - component: {fileID: 5112605315179295135}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -9832,6 +9833,22 @@ Transform:
   - {fileID: 178096805599267907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &5112605315179295135
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589476456440408989}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.795, y: 2.875, z: 8.55}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.97, y: 0, z: -1.5}
+  m_TimeToStationary: 0.5
 --- !u!1 &4805660273560762403
 GameObject:
   m_ObjectHideFlags: 0
@@ -12120,7 +12137,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1715
+  m_VersionIndex: 1718
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14587,7 +14604,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1715
+  m_VersionIndex: 1718
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -16562,7 +16579,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1915
+  m_VersionIndex: 1918
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -18537,7 +18554,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1915
+  m_VersionIndex: 1918
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -20042,7 +20059,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 30
+  m_VersionIndex: 33
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -20123,6 +20140,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1576841750411326447}
     m_Modifications:
+    - target: {fileID: 442258805788441714, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1039
+      objectReference: {fileID: 0}
     - target: {fileID: 5626839467539234821, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
       propertyPath: m_Name
       value: Crate (10)
@@ -20167,6 +20188,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6619839531378236293, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1039
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446595354843291763, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1046
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20185,6 +20214,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1576841750411326447}
     m_Modifications:
+    - target: {fileID: 442258805788441714, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1039
+      objectReference: {fileID: 0}
     - target: {fileID: 5626839467539234821, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
       propertyPath: m_Name
       value: Crate (11)
@@ -20228,6 +20261,14 @@ PrefabInstance:
     - target: {fileID: 5634843420809581989, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619839531378236293, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1039
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446595354843291763, guid: 9567d3128f25e7c4eaa5749ef800648d, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1046
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

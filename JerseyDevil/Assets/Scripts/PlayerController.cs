@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Debug.Log(controller);
     }
 
     // Update is called once per frame
@@ -113,7 +112,6 @@ public class PlayerController : MonoBehaviour
         healthSlider.value = health;
         if (health <= 0)
         {
-            Debug.Log("They do be dead");
             health = 0;
 
         }

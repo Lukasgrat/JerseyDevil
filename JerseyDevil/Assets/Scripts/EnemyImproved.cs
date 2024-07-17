@@ -142,7 +142,6 @@ public class EnemyImproved : MonoBehaviour
         }
 
         FaceTarget(nextDestination);
-        agent.SetDestination(nextDestination);
     }
 
 
@@ -160,8 +159,7 @@ public class EnemyImproved : MonoBehaviour
             currentState = FSMStates.shooting;
         }
 
-        FaceTarget(nextDestination);
-        agent.SetDestination(nextDestination);
+        FaceTarget(agent.steeringTarget);
 
     }
 
@@ -186,16 +184,9 @@ public class EnemyImproved : MonoBehaviour
         )
         {
             agent.isStopped = false;
-            if (this.wanderPoints.Length > 1)
-            {
-                currentState = FSMStates.chasing;
-                lastKnownPlayerLocation = player.transform.position;
-            }
-            else
-            {
-                lastKnownPlayerLocation = player.transform.position;
-                currentState = FSMStates.chasing;
-            }
+            lastKnownPlayerLocation = player.transform.position;
+            currentState = FSMStates.chasing;
+            agent.SetDestination(lastKnownPlayerLocation);
             return;
         }
         RaycastHit[] hits;

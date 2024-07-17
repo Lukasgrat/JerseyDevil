@@ -23,7 +23,7 @@ public class Submachine : MonoBehaviour, IGUN
     int curAmmo;
     TMP_Text ammoText;
     MouseLook playerHead;
-    float MAXOFFSET = 50;
+    float MAXOFFSET = 30;
     float recoilAimOffset = 0f;
     float startFOV;
     public float decreaseInFOV = 20f;
@@ -191,7 +191,7 @@ public class Submachine : MonoBehaviour, IGUN
         curAmmo -= 1;
         UpdateAmmoText();
         FindObjectOfType<ReticleLogic>().InitiateReticle(fireTime);
-        playerHead.iniateRecoil(10);
+        playerHead.iniateRecoil(20);
         shootingSFXSource.clip = shootingSFX;
         shootingSFXSource.Play();
 

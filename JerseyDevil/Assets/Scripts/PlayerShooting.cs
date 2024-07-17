@@ -125,11 +125,11 @@ public class PlayerShooting : MonoBehaviour
     void SightHandler()
     {
         GameObject sightedObject = inSights(Physics.RaycastAll(transform.position, transform.forward, 600));
-        if (sightedObject != null && sightedObject.TryGetComponent(out EnemyImproved target))
+        if (sightedObject != null && sightedObject.TryGetComponent(out EnemyImproved target) && !target.isDead)
         {
             target.HealthDisplay();
         }
-        else if (sightedObject != null && sightedObject.TryGetComponent(out EnemyHead head))
+        else if (sightedObject != null && sightedObject.TryGetComponent(out EnemyHead head) && !head.enemy.isDead)
         {
             head.enemy.HealthDisplay();
         }
