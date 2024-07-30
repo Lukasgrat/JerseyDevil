@@ -23,7 +23,7 @@ public class Submachine : MonoBehaviour, IGUN
     int curAmmo;
     TMP_Text ammoText;
     MouseLook playerHead;
-    float MAXOFFSET = 30;
+    public float MAXOFFSET = 30;
     float recoilAimOffset = 0f;
     float startFOV;
     public float decreaseInFOV = 20f;

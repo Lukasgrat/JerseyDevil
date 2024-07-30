@@ -453,6 +453,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 88417447321726872, guid: 9e66e3de062ceb54dbfc7456d0253cb8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 357641979010840240}
+    - targetCorrespondingSourceObject: {fileID: 88417447321726872, guid: 9e66e3de062ceb54dbfc7456d0253cb8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 723195743616948682}
     - targetCorrespondingSourceObject: {fileID: 7664086078795690495, guid: 9e66e3de062ceb54dbfc7456d0253cb8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2747146698467397479}
@@ -740,3 +743,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &723195743616948682
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777092939816047752}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5, y: 4.48, z: 1.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 3.39, z: 0}
+  m_TimeToStationary: 0.5

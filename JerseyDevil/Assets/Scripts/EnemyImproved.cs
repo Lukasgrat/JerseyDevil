@@ -226,7 +226,13 @@ public class EnemyImproved : MonoBehaviour
     // Updates Dead FSM State
     void UpdateDeadState()
     {
-        agent.isStopped = true;
+        if (GetComponent<NavMeshAgent>().enabled) 
+        {
+            agent.isStopped = true;
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+        GetComponent<NavMeshObstacle>().enabled = true;
+
         isDead = true;
         if (playerAnimator.GetInteger("animState") != 2)
         {
@@ -328,14 +334,9 @@ public class EnemyImproved : MonoBehaviour
     public void OnPlayerFire() 
     {
         if (currentState == FSMStates.shooting || isDead) return;
-        Debug.Log(Vector3.Distance(player.transform.position, transform.position));
         if (Vector3.Distance(player.transform.position, transform.position) <= hearingRadius) 
         {
             GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, hearingRadius));
-            if (sightedGameObject != null) 
-            {
-                Debug.Log(transform.parent.gameObject.name + "|" + sightedGameObject.name);
-            }
             if (sightedGameObject != null && sightedGameObject.TryGetComponent(out PlayerController PC))
             {
                 FaceTargetRapid(player.transform.position);
