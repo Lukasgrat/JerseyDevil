@@ -20,6 +20,9 @@ public class Rifle : MonoBehaviour, IGUN
     float sightingTimer = 0;
     Vector3 startLocalPos;
     public Vector3 desiredZoomPos;
+    public GameObject bullets;
+    public GameObject cartiagePrefab;
+    public GameObject clipPrefab;
     int curAmmo;
     TMP_Text ammoText;
     MouseLook playerHead;
@@ -145,7 +148,7 @@ public class Rifle : MonoBehaviour, IGUN
 
     private IEnumerator shootingEffects()
     {
-        yield return new WaitForSeconds(.1333f);
+        yield return new WaitForSeconds(.08333f);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         RaycastHit[] hits = Physics.RaycastAll(playerHead.transform.position,
           playerHead.transform.forward, 600);
@@ -169,6 +172,21 @@ public class Rifle : MonoBehaviour, IGUN
         shootingSFXSource.clip = shootingSFX;
         shootingSFXSource.Play();
 
+        yield return new WaitForSeconds(.083333f);
+
+        GameObject newBullet = Instantiate(cartiagePrefab, bullets.transform);
+        newBullet.transform.position +=  (bullets.transform.forward * .5f);
+        newBullet.GetComponent<Rigidbody>().AddForce(bullets.transform.up * 50 * Random.Range(.7f, 1.1f) + bullets.transform.right * 200 * Random.Range(.7f, 1.1f) + bullets.transform.forward * 100);
+        newBullet.GetComponent<Rigidbody>().AddTorque(bullets.transform.forward * 3000 + bullets.transform.up * 3000);
+        newBullet.transform.parent = null;
+        yield return new WaitForSeconds(.05f);
+        if (curAmmo == 0) 
+        {
+            GameObject clip = Instantiate(clipPrefab, bullets.transform);
+            clip.GetComponent<Rigidbody>().AddForce(bullets.transform.up * 500 * Random.Range(.7f, 1.1f) + bullets.transform.right * 100 * Random.Range(.7f, 1.1f) + bullets.transform.forward * 10);
+            clip.GetComponent<Rigidbody>().AddTorque(bullets.transform.forward * 3000 + bullets.transform.up * 3000);
+            clip.transform.parent = null;
+        }
     }
 
     public void Holster() 
