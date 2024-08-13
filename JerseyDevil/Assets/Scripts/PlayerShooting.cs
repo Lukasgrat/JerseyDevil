@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public enum Gunplay
 {
     Reloading,
+    ReloadStart,
+    ReloadEnd,
+    ReloadMiddle,
     Readied,
     Firing,
     Holster,
@@ -43,6 +46,7 @@ public class PlayerShooting : MonoBehaviour
     IGUN currentGun;
     int currentGunIndex = 0;
     public List<GameObject> availableGuns;
+    public Camera layeredCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +68,7 @@ public class PlayerShooting : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+        layeredCamera.fieldOfView = Camera.main.fieldOfView;
         currentGun.ShootingLogic();
         SightHandler();
         ThrowingHandler();

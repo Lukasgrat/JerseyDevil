@@ -48,12 +48,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadingSFX: {fileID: 8300000, guid: e94f2fb5f0d27494da3a334bd75955cb, type: 3}
   shootingSFX: {fileID: 8300000, guid: ba1521a134be3dd4799827ed66684e35, type: 3}
-  reloadTime: 3
-  fireTime: 0.75
+  reloadTime: 2
+  fireTime: 1
   holsterTime: 0.834
   curState: 0
   maxAmmo: 5
-  sightingTime: 0.5
+  SIGHTINGTIME: 0.5
+  desiredZoomPos: {x: 0, y: 0, z: 0}
+  bullets: {fileID: 0}
+  cartiagePrefab: {fileID: 0}
+  clipPrefab: {fileID: 0}
   decreaseInFOV: 20
 --- !u!82 &1573645224474170813
 AudioSource:

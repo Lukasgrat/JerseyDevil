@@ -89,11 +89,23 @@ public class Rifle : MonoBehaviour, IGUN
         {
             timer = reloadTime;
         }
+        else if (curState == Gunplay.ReloadStart)
+        {
+            timer = .5f;
+        }
+        else if (curState == Gunplay.ReloadMiddle) 
+        {
+            timer = .3333f;
+        }
+        else if (curState == Gunplay.ReloadEnd)
+        {
+            timer = .5f;
+        }
         else if (curState == Gunplay.Firing)
         {
             timer = fireTime;
         }
-        else if(curState == Gunplay.Holster) 
+        else if (curState == Gunplay.Holster)
         {
             timer = holsterTime;
         }
@@ -103,15 +115,69 @@ public class Rifle : MonoBehaviour, IGUN
         }
         else
         {
-            if (curState == Gunplay.Reloading)
+            if (curState == Gunplay.Reloading && curAmmo == 0)
             {
                 this.curAmmo = this.maxAmmo;
                 UpdateAmmoText();
             }
-            coolDownTime = 0;
+            if (new List<Gunplay> { Gunplay.ReloadMiddle, Gunplay.ReloadStart, Gunplay.ReloadEnd }.Contains(curState))
+            {
+                this.DynamicReloadLogic();
+                coolDownTime = 0;
+            }
+            else 
+            {
+                coolDownTime = 0;
+                curState = Gunplay.Readied;
+                gunAnimator.SetInteger("animState", 0);
+                gunAnimator.gameObject.transform.localPosition = Vector3.zero;
+            }
+        }
+    }
+
+
+    private void DynamicReloadLogic()
+    {
+        if (curState == Gunplay.ReloadEnd)
+        {
             curState = Gunplay.Readied;
             gunAnimator.SetInteger("animState", 0);
             gunAnimator.gameObject.transform.localPosition = Vector3.zero;
+        }
+        else if (curState == Gunplay.ReloadStart)
+        {
+            if (curAmmo == maxAmmo)
+            {
+                gunAnimator.SetInteger("animState", 10);
+                curState = Gunplay.ReloadEnd;
+            }
+            else
+            {
+                curState = Gunplay.ReloadMiddle;
+                gunAnimator.SetInteger("animState", 13);
+            }
+        }
+        else if (curState == Gunplay.ReloadMiddle) 
+        {
+            curAmmo++;
+            UpdateAmmoText();
+            if (curAmmo == maxAmmo)
+            {
+                gunAnimator.SetInteger("animState", 10);
+                curState = Gunplay.ReloadEnd;
+            }
+            else
+            {
+                curState = Gunplay.ReloadMiddle;
+                if (gunAnimator.GetInteger("animState") == 13)
+                {
+                    gunAnimator.SetInteger("animState", 12);
+                }
+                else
+                {
+                    gunAnimator.SetInteger("animState", 13);
+                }
+            }
         }
     }
 
@@ -133,11 +199,22 @@ public class Rifle : MonoBehaviour, IGUN
         }
         if (!isZooming && (Input.GetKeyDown(KeyCode.R) || (curAmmo == 0 && Input.GetButtonDown("Fire1"))))
         {
-            gunAnimator.gameObject.transform.localEulerAngles = new Vector3(0, -5, 0);
-            curState = Gunplay.Reloading;
-            shootingSFXSource.clip = reloadingSFX;
-            shootingSFXSource.Play();
-            gunAnimator.SetInteger("animState", 2);
+            if (curAmmo == 0)
+            {
+                gunAnimator.gameObject.transform.localEulerAngles = new Vector3(0, -5, 0);
+                curState = Gunplay.Reloading;
+                shootingSFXSource.clip = reloadingSFX;
+                shootingSFXSource.Play();
+                gunAnimator.SetInteger("animState", 2);
+            }
+            else 
+            {
+                curState = Gunplay.ReloadStart;
+                shootingSFXSource.clip = reloadingSFX;
+                shootingSFXSource.Play();
+                gunAnimator.SetInteger("animState", 11);
+                coolDownTime =  0;
+            }
         }
     }
 
