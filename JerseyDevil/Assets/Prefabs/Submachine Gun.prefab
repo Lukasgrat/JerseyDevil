@@ -49,12 +49,13 @@ MonoBehaviour:
   reloadingSFX: {fileID: 0}
   shootingSFX: {fileID: 8300000, guid: 1b727291087cbd2408641b163b9b3019, type: 3}
   reloadTime: 3.8
-  fireTime: 0.1666667
+  fireTime: 0.1
   holsterTime: 0.834
   curState: 1
   maxAmmo: 30
   SIGHTINGTIME: 0.5
   desiredZoomPos: {x: 0, y: -0.362, z: 0.914}
+  MAXOFFSET: 30
   decreaseInFOV: 20
   bulletPrefab: {fileID: 5850991661401772025, guid: e5dbb87ac6739ca4eb976ac2de0d04c9, type: 3}
   bulletTransformParent: {fileID: 9069708574750339620}

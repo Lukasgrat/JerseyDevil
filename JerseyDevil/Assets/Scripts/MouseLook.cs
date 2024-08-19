@@ -70,7 +70,7 @@ public class MouseLook : MonoBehaviour
         float shortestDistance = float.MaxValue;
         foreach (RaycastHit hit in hits)
         {
-            if (hit.distance < shortestDistance)
+            if (hit.distance < shortestDistance && !(hit.collider.gameObject.tag == "Gun"))
             {
                 shortestDistance = hit.distance;
                 shortestGameObject = hit.collider.gameObject;

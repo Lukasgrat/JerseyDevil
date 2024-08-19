@@ -8,6 +8,7 @@ TagManager:
   - EnemyHealthSlider
   - EnemyCount
   - Enemy
+  - Gun
   layers:
   - Default
   - TransparentFX

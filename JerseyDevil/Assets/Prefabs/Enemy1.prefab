@@ -610,9 +610,9 @@ MonoBehaviour:
   maxHealth: 30
   isDead: 0
   canShoot: 1
-  shootingCooldown: 0.3
-  enemyDamageAmount: 5
-  seeingRadius: 130
+  shootingCooldown: 0.1
+  enemyDamageAmount: 3
+  seeingRadius: 40
   hearingRadius: 100
   fieldOfView: 45
   head: {fileID: 3948120346092788913}

@@ -248,7 +248,10 @@ public class Rifle : MonoBehaviour, IGUN
         playerHead.iniateRecoil();
         shootingSFXSource.clip = shootingSFX;
         shootingSFXSource.Play();
-
+        foreach (EnemyImproved enemy in GameObject.FindObjectsOfType<EnemyImproved>())
+        {
+            enemy.OnPlayerFire();
+        }
         yield return new WaitForSeconds(.083333f);
 
         GameObject newBullet = Instantiate(cartiagePrefab, bullets.transform);

@@ -19,6 +19,7 @@ public class EnemyImproved : MonoBehaviour
 
 
     GameObject player;
+    GameObject playerHead;
     public int maxHealth = 30;
     int curhealth = 30;
     public bool isDead = false;
@@ -55,6 +56,7 @@ public class EnemyImproved : MonoBehaviour
         curhealth = maxHealth;
         playerWonCardGame = gameWon;
         cardGamePlayed = gamePlayed;
+        playerHead = Camera.main.gameObject;
         //currentState = FSMStates.idle;
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
@@ -122,7 +124,13 @@ public class EnemyImproved : MonoBehaviour
     void UpdateChasingState()
     {
         playerAnimator.SetInteger("animState", 1);
-        nextDestination = lastKnownPlayerLocation;
+        if (nextDestination != lastKnownPlayerLocation && agent.isOnNavMesh) 
+        {
+
+            agent.SetDestination(lastKnownPlayerLocation);
+            nextDestination = lastKnownPlayerLocation;
+            agent.isStopped = false;
+        }
         if (Vector3.Distance(transform.position, nextDestination) < 3)
         {
             if (this.wanderPoints.Length > 1)
@@ -141,7 +149,7 @@ public class EnemyImproved : MonoBehaviour
             currentState = FSMStates.shooting;
         }
 
-        FaceTarget(nextDestination);
+        FaceTarget(agent.steeringTarget);
     }
 
 
@@ -149,7 +157,11 @@ public class EnemyImproved : MonoBehaviour
     {
         playerAnimator.SetInteger("animState", 1);
 
-        if(Vector3.Distance(transform.position, nextDestination) < 3)
+        if (agent.isOnNavMesh)
+        {
+            agent.isStopped = false;
+        }
+        if (Vector3.Distance(transform.position, nextDestination) < 3)
         {
             FindNextPoint();
         }
@@ -160,13 +172,15 @@ public class EnemyImproved : MonoBehaviour
         }
 
         FaceTarget(agent.steeringTarget);
-
     }
 
     // Updates Shooting FSM State
     void UpdateShootState()
     {
-        agent.isStopped = true;
+        if (agent.isOnNavMesh) 
+        {
+            agent.isStopped = true;
+        }
         gun.SetActive(true);
         playerAnimator.SetInteger("animState", 5);
         var playerPos = player.transform.position;
@@ -179,48 +193,32 @@ public class EnemyImproved : MonoBehaviour
             head.transform.LookAt(player.transform.position);
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) > (seeingRadius + hearingRadius) / 2
+        if (Vector3.Distance(player.transform.position, transform.position) > seeingRadius
             || !IsPlayerInClearFOV()
         )
         {
-            agent.isStopped = false;
+            if (agent.isOnNavMesh) 
+            {
+                agent.isStopped = false;
+            }
             lastKnownPlayerLocation = player.transform.position;
             currentState = FSMStates.chasing;
-            agent.SetDestination(lastKnownPlayerLocation);
+            if (agent.isOnNavMesh) 
+            {
+                agent.SetDestination(lastKnownPlayerLocation);
+            }
             return;
         }
-        RaycastHit[] hits;
-        if (head != null)
+
+        if (shootingTime <= 0 && currentState == FSMStates.shooting)
         {
-            hits = Physics.RaycastAll(head.transform.position, head.transform.forward, 50);
+            ShootPlayer();
         }
-        else
+        if (shootingTime > 0)
         {
-            hits = Physics.RaycastAll(transform.position, transform.forward, 50);
+            shootingTime -= Time.deltaTime;
         }
 
-        if (canShoot && InSights(hits) == player)
-        {
-            if (shootingTime <= 0)
-            {
-                ShootPlayer();
-            }
-            if (shootingTime > 0)
-            {
-                shootingTime -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            if (shootingTime > shootingCooldown / 2)
-            {
-                shootingTime -= Time.deltaTime;
-            }
-            else if (shootingTime < shootingCooldown / 2)
-            {
-                shootingTime += Time.deltaTime / 2;
-            }
-        }
     }
 
     // Updates Dead FSM State
@@ -250,7 +248,7 @@ public class EnemyImproved : MonoBehaviour
     {
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
-        currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
+        currentDestinationIndex =  Random.Range(0, wanderPoints.Length);
 
         agent.SetDestination(nextDestination);
     }
@@ -261,10 +259,12 @@ public class EnemyImproved : MonoBehaviour
         Vector3 directionToTarget = (target - transform.position).normalized;
 
         directionToTarget.y = 0;
+        if (directionToTarget != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
 
-        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
+        }
     }
 
     // Rotates the Enemy to face the given target
@@ -310,7 +310,7 @@ public class EnemyImproved : MonoBehaviour
         float shortestDistance = float.MaxValue;
         foreach (RaycastHit hit in hits)
         {
-            if (hit.distance < shortestDistance && hit.collider.gameObject.tag != this.tag)
+            if (hit.distance < shortestDistance && hit.collider.gameObject.tag != this.tag && hit.collider.gameObject.tag != "Gun")
             {
                 shortestDistance = hit.distance;
                 shortestGameObject = hit.collider.gameObject;
@@ -321,8 +321,8 @@ public class EnemyImproved : MonoBehaviour
 
     private void ShootPlayer()
     {
-        this.GetComponent<AudioSource>().Play();
-
+        //AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
+        this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
         if (Random.Range(0, 5) < 2)
         {
             player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
@@ -336,11 +336,16 @@ public class EnemyImproved : MonoBehaviour
         if (currentState == FSMStates.shooting || isDead) return;
         if (Vector3.Distance(player.transform.position, transform.position) <= hearingRadius) 
         {
-            GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, hearingRadius));
+            GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, seeingRadius));
             if (sightedGameObject != null && sightedGameObject.TryGetComponent(out PlayerController PC))
             {
                 FaceTargetRapid(player.transform.position);
                 currentState = FSMStates.shooting;
+            }
+            else 
+            {
+                currentState = FSMStates.chasing;
+                lastKnownPlayerLocation = player.transform.position;
             }
         }
     }
@@ -360,15 +365,22 @@ public class EnemyImproved : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 directionToPlayer = player.transform.position - head.position;
-        
+        if (Vector3.Distance(head.position, player.transform.position) > seeingRadius) 
+        {
+            return false;
+        }
         if (Vector3.Angle(directionToPlayer, head.forward) <= fieldOfView)
         {
-            if(Physics.Raycast(head.position, directionToPlayer, out hit, seeingRadius))
+            GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, seeingRadius));
+            GameObject sightedBasedOnHead= InSights(Physics.RaycastAll(head.position, playerHead.transform.position - head.position, seeingRadius));
+            if (sightedGameObject != null) 
             {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    return true;
-                }
+                if(sightedGameObject.CompareTag("Player"))
+                return true;
+            }
+            if (sightedBasedOnHead != null)
+            {
+                return sightedBasedOnHead.CompareTag("Player");
             }
         }
         return false;

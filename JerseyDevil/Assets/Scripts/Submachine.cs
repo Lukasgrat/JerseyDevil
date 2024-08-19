@@ -45,7 +45,7 @@ public class Submachine : MonoBehaviour, IGUN
     // Update is called once per frame
     void Update()
     {
-        if ( (Input.GetButton("Fire2") || (sightingTimer > 0 && Input.GetButton("Fire1")))
+        if ( (Input.GetButton("Fire2"))
             && !FindAnyObjectByType<PlayerController>().IsDead() && (curState == Gunplay.Readied || curState == Gunplay.Firing))
         {
             sightingTimer = Mathf.Min(sightingTimer + Time.deltaTime, SIGHTINGTIME);
@@ -153,7 +153,7 @@ public class Submachine : MonoBehaviour, IGUN
 
     private IEnumerator shootingEffects()
     {
-        yield return new WaitForSeconds(.0334f);
+        yield return new WaitForSeconds(.0334f/2);
         float deviationAmount = Random.Range(0, recoilAimOffset);
         if (sightingTimer == SIGHTINGTIME) 
         {
@@ -178,13 +178,16 @@ public class Submachine : MonoBehaviour, IGUN
         if (hits.Length > 0)
         {
             GameObject sightedObject = playerHead.inSights(hits);
-            if (sightedObject.TryGetComponent(out EnemyImproved target))
+            if (sightedObject != null) 
             {
-                target.TakeDamage(5);
-            }
-            if (sightedObject.TryGetComponent(out EnemyHead enemyHead))
-            {
-                enemyHead.enemy.TakeDamage(10);
+                if (sightedObject.TryGetComponent(out EnemyImproved target))
+                {
+                    target.TakeDamage(5);
+                }
+                if (sightedObject.TryGetComponent(out EnemyHead enemyHead))
+                {
+                    enemyHead.enemy.TakeDamage(10);
+                }
             }
         }
         recoilAimOffset = Mathf.Min(recoilAimOffset + MAXOFFSET / 7, MAXOFFSET);
@@ -192,8 +195,7 @@ public class Submachine : MonoBehaviour, IGUN
         UpdateAmmoText();
         FindObjectOfType<ReticleLogic>().InitiateReticle(fireTime);
         playerHead.iniateRecoil(20);
-        shootingSFXSource.clip = shootingSFX;
-        shootingSFXSource.Play();
+        shootingSFXSource.PlayOneShot(shootingSFX);
 
     }
 
