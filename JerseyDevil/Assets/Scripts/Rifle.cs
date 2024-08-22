@@ -232,13 +232,20 @@ public class Rifle : MonoBehaviour, IGUN
         if (hits.Length > 0)
         {
             GameObject sightedObject = playerHead.inSights(hits);
-            if (sightedObject.TryGetComponent(out EnemyImproved target))
+            if (sightedObject != null) 
             {
-                target.TakeDamage(5);
-            }
-            if (sightedObject.TryGetComponent(out EnemyHead enemyHead))
-            {
-                enemyHead.enemy.TakeDamage(35);
+                if (sightedObject.TryGetComponent(out EnemyImproved target))
+                {
+                    target.TakeDamage(5);
+                }
+                if (sightedObject.TryGetComponent(out EnemyHead enemyHead))
+                {
+                    enemyHead.enemy.TakeDamage(35);
+                }
+                if (sightedObject.TryGetComponent(out ScoreSender scoreSender))
+                {
+                    scoreSender.SendScore();
+                }
             }
         }
 

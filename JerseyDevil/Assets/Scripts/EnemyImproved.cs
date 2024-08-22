@@ -131,7 +131,7 @@ public class EnemyImproved : MonoBehaviour
             nextDestination = lastKnownPlayerLocation;
             agent.isStopped = false;
         }
-        if (Vector3.Distance(transform.position, nextDestination) < 3)
+        if (Vector3.Distance(transform.position, nextDestination) < 3 || agent.pathStatus != NavMeshPathStatus.PathComplete)
         {
             if (this.wanderPoints.Length > 1)
             {
@@ -213,6 +213,10 @@ public class EnemyImproved : MonoBehaviour
         if (shootingTime <= 0 && currentState == FSMStates.shooting)
         {
             ShootPlayer();
+            foreach (EnemyImproved enemy in GameObject.FindObjectsOfType<EnemyImproved>())
+            {
+                enemy.OnPlayerFire();
+            }
         }
         if (shootingTime > 0)
         {
@@ -249,8 +253,10 @@ public class EnemyImproved : MonoBehaviour
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
         currentDestinationIndex =  Random.Range(0, wanderPoints.Length);
-
-        agent.SetDestination(nextDestination);
+        if (agent.isOnNavMesh) 
+        {
+            agent.SetDestination(nextDestination);
+        }
     }
 
     // Rotates the Enemy to face the given target

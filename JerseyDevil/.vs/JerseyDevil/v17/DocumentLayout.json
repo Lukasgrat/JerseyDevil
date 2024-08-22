@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\texturetilingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\texturetilingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\enemyimproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyimproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\submachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\submachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\rifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,8 +15,24 @@
       "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playershooting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\submachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\submachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scoreholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scoreholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|c:\\users\\lukas\\documents\\jerseydevil\\jerseydevil\\assets\\scoresender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scoresender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\texturetilingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|solutionrelative:assets\\texturetilingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDAC332D-6579-5CA9-A192-5196FD3EA16F}|Assembly-CSharp.csproj|C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,11 +58,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "ScoreSender.cs",
+              "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\ScoreSender.cs",
+              "RelativeDocumentMoniker": "Assets\\ScoreSender.cs",
+              "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\ScoreSender.cs",
+              "RelativeToolTip": "Assets\\ScoreSender.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-19T19:52:46.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ScoreHolder.cs",
+              "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\ScoreHolder.cs",
+              "RelativeDocumentMoniker": "Assets\\ScoreHolder.cs",
+              "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\ScoreHolder.cs",
+              "RelativeToolTip": "Assets\\ScoreHolder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-19T19:48:52.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "TextureTilingController.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\TextureTilingController.cs",
               "RelativeDocumentMoniker": "Assets\\TextureTilingController.cs",
@@ -62,24 +96,24 @@
               "RelativeToolTip": "Assets\\TextureTilingController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T21:19:17.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-17T21:19:17.501Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Rifle.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\Rifle.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rifle.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\Rifle.cs",
               "RelativeToolTip": "Assets\\Scripts\\Rifle.cs",
-              "ViewState": "AQIAANcAAAAAAAAAAAAlwP0AAAAJAAAA",
+              "ViewState": "AQIAAOIAAAAAAAAAAAArwP8AAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T02:11:21.262Z"
+              "WhenOpened": "2024-08-12T02:11:21.262Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "EnemyManager.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyManager.cs",
@@ -91,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "EnemyHead.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyHead.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyHead.cs",
@@ -103,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
@@ -115,55 +149,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "PlayerShooting.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerShooting.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerShooting.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\PlayerShooting.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerShooting.cs",
-              "ViewState": "AQIAAIEAAAAAAAAAAAAgwKAAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T03:10:12.687Z"
+              "WhenOpened": "2024-07-03T03:10:12.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "EnemyImproved.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyImproved.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyImproved.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\EnemyImproved.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyImproved.cs",
-              "ViewState": "AQIAAFsBAAAAAAAAAAAMwGsBAAANAAAA",
+              "ViewState": "AQIAADoBAAAAAAAAAIAwwFoBAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T16:49:26.416Z"
+              "WhenOpened": "2024-07-02T16:49:26.416Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MouseLook.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\MouseLook.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MouseLook.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\MouseLook.cs",
               "RelativeToolTip": "Assets\\Scripts\\MouseLook.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAADgv0gAAABTAAAA",
+              "ViewState": "AQIAACMAAAAAAAAAAAArwEIAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T00:17:51.817Z"
+              "WhenOpened": "2024-06-27T00:17:51.817Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Submachine.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\Submachine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Submachine.cs",
               "ToolTip": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\Submachine.cs",
               "RelativeToolTip": "Assets\\Scripts\\Submachine.cs",
-              "ViewState": "AQIAAL8AAAAAAAAAAAApwL0AAAARAAAA",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAhwMMAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-27T00:13:36.605Z"
+              "WhenOpened": "2024-06-27T00:13:36.605Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "explosionLogic.cs",
               "DocumentMoniker": "C:\\Users\\lukas\\Documents\\JerseyDevil\\JerseyDevil\\Assets\\Scripts\\explosionLogic.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\explosionLogic.cs",

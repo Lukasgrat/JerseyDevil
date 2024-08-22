@@ -188,6 +188,15 @@ public class Submachine : MonoBehaviour, IGUN
                 {
                     enemyHead.enemy.TakeDamage(10);
                 }
+
+                if (sightedObject.TryGetComponent(out ScoreSender scoreSender))
+                {
+                    scoreSender.SendScore();
+                }
+                else if(ScoreHolder.instance != null) 
+                {
+                    ScoreHolder.instance.ReceiveScore("0");
+                }
             }
         }
         recoilAimOffset = Mathf.Min(recoilAimOffset + MAXOFFSET / 7, MAXOFFSET);

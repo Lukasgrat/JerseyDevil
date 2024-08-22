@@ -680,6 +680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4877614308264589830, guid: c61cf01f760d7a74083609a6a1072dde, type: 3}
+      propertyPath: m_TagString
+      value: Gun
+      objectReference: {fileID: 0}
     - target: {fileID: 5072974303300634169, guid: c61cf01f760d7a74083609a6a1072dde, type: 3}
       propertyPath: m_VersionIndex
       value: 10
