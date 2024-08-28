@@ -240,7 +240,14 @@ public class Rifle : MonoBehaviour, IGUN
                 }
                 if (sightedObject.TryGetComponent(out EnemyHead enemyHead))
                 {
-                    enemyHead.enemy.TakeDamage(35);
+                    if (sightingTimer == SIGHTINGTIME)
+                    {
+                        enemyHead.enemy.TakeDamage(35);
+                    }
+                    else 
+                    {
+                       enemyHead.enemy.TakeDamage(15);
+                    }
                 }
                 if (sightedObject.TryGetComponent(out ScoreSender scoreSender))
                 {

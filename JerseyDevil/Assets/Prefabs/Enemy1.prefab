@@ -614,7 +614,7 @@ MonoBehaviour:
   enemyDamageAmount: 3
   seeingRadius: 40
   hearingRadius: 100
-  fieldOfView: 45
+  fieldOfView: 30
   head: {fileID: 3948120346092788913}
   displayName: Enemy
   currentState: 0
@@ -623,6 +623,7 @@ MonoBehaviour:
   - {fileID: 2619912220671106948}
   gun: {fileID: 6325633188395194355}
   playerAnimator: {fileID: 0}
+  nextDestination: {x: 0, y: 0, z: 0}
   gamePlayed: 1
   gameWon: 1
 --- !u!195 &1485958972344999285
@@ -634,7 +635,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7777092939816047752}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 6.71
+  m_Radius: 3.6
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -646,7 +647,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!82 &357641979010840240
 AudioSource:
   m_ObjectHideFlags: 0

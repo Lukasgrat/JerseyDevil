@@ -39,7 +39,7 @@ public class EnemyImproved : MonoBehaviour
     NavMeshAgent agent;
 
     public Animator playerAnimator;
-    Vector3 nextDestination;
+    public Vector3 nextDestination;
     int currentDestinationIndex = 0;
     float distanceToPlayer;
 
@@ -325,11 +325,30 @@ public class EnemyImproved : MonoBehaviour
         return shortestGameObject;
     }
 
+
+    /// <summary>
+    /// Given a distance, returns of the enemy was able to hit the target
+    /// </summary>
+    /// <param name="distance"></param>
+    /// <returns></returns>
+    private bool ShotHit(float distance)
+    {
+        float half = seeingRadius / 2;
+        if (distance > half)
+        {
+            return Random.Range(0.0f, 1.0f) < (-Mathf.Sqrt(distance * half - half * half) + half) / seeingRadius;
+        }
+        else
+        {
+            return Random.Range(0.0f, 1.0f) < (Mathf.Sqrt(distance * -half + half * half) + half) / seeingRadius;
+        }
+    }
+
     private void ShootPlayer()
     {
         //AudioSource.PlayClipAtPoint(this.GetComponent<AudioSource>().clip, this.transform.position);
         this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
-        if (Random.Range(0, 5) < 2)
+        if (ShotHit(Vector3.Distance(player.transform.position, transform.position)))
         {
             player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
         }
@@ -339,19 +358,38 @@ public class EnemyImproved : MonoBehaviour
 
     public void OnPlayerFire() 
     {
+        this.OnPlayerFire(player.transform.position);
+    }
+
+    public void OnPlayerFire(Vector3 position) 
+    {
         if (currentState == FSMStates.shooting || isDead) return;
-        if (Vector3.Distance(player.transform.position, transform.position) <= hearingRadius) 
+        if (Vector3.Distance(position, transform.position) <= hearingRadius)
         {
-            GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, seeingRadius));
+            GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, position - head.position, seeingRadius));
             if (sightedGameObject != null && sightedGameObject.TryGetComponent(out PlayerController PC))
             {
-                FaceTargetRapid(player.transform.position);
+                FaceTarget(position);
                 currentState = FSMStates.shooting;
             }
-            else 
+            else
             {
-                currentState = FSMStates.chasing;
-                lastKnownPlayerLocation = player.transform.position;
+                NavMeshPath path = new NavMeshPath();
+                NavMesh.CalculatePath(transform.position, position, NavMesh.AllAreas, path);
+                var corners = path.corners;
+                var fullDistance = 0f;
+
+                for (int i = 1; i < corners.Length; i++)
+                {
+                    fullDistance += Vector3.Distance(corners[i - 1], corners[i]);
+                }
+                if (fullDistance <= hearingRadius && agent.isOnNavMesh)
+                {
+                    currentState = FSMStates.chasing;
+                    lastKnownPlayerLocation = position;
+                    nextDestination = lastKnownPlayerLocation;
+                    agent.SetPath(path);
+                }
             }
         }
     }
@@ -367,15 +405,21 @@ public class EnemyImproved : MonoBehaviour
         text.text = displayName;
     }
 
-    bool IsPlayerInClearFOV()
+    bool IsPlayerInClearFOV(float fov = -1)
     {
-        RaycastHit hit;
+        if (fov == -1) 
+        {
+            fov = fieldOfView;
+        } 
         Vector3 directionToPlayer = player.transform.position - head.position;
         if (Vector3.Distance(head.position, player.transform.position) > seeingRadius) 
         {
             return false;
         }
-        if (Vector3.Angle(directionToPlayer, head.forward) <= fieldOfView)
+        directionToPlayer.y = 0;
+        Vector3 tempHead = head.forward;
+        tempHead.y = 0;
+        if (Vector3.Angle(directionToPlayer, tempHead) <= fov)
         {
             GameObject sightedGameObject = InSights(Physics.RaycastAll(head.position, player.transform.position - head.position, seeingRadius));
             GameObject sightedBasedOnHead= InSights(Physics.RaycastAll(head.position, playerHead.transform.position - head.position, seeingRadius));

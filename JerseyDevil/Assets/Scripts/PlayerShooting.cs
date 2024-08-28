@@ -117,9 +117,9 @@ public class PlayerShooting : MonoBehaviour
         else if(currentGun.CanThrowDynamite() &&
             (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt) || Input.GetKeyUp(KeyCode.Q)))
         {
-            GameObject newDynamite = Instantiate(dynamite, this.transform.position + transform.forward.normalized * .25f, this.transform.rotation, GameObject.FindGameObjectWithTag("Particles").transform);
+            GameObject newDynamite = Instantiate(dynamite, this.transform.position + transform.forward.normalized * .25f, this.transform.rotation);
             newDynamite.GetComponent<Rigidbody>().AddForce(
-                Quaternion.AngleAxis(0, Vector3.left) * transform.forward * throwingForce, ForceMode.Force);
+                Quaternion.AngleAxis(0, Vector3.left) * transform.forward * throwingForce * newDynamite.GetComponent<Rigidbody>().mass, ForceMode.Force);
             cooldownDynamiteTimer = coolDownDynamiteTime;
             newDynamite.GetComponent<Rigidbody>().AddRelativeTorque(Vector3.right * 20);
         }

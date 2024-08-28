@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownDynamiteTime: 5
-  throwingForce: 900
+  throwingForce: 2000
   curState: 0
   ammoText: {fileID: 0}
   dynamite: {fileID: 2205879656789641371, guid: 847d5b7f8f3cc134c9dfef0b50ed2a17, type: 3}
