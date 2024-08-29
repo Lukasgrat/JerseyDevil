@@ -35,6 +35,7 @@ public class EnemyImproved : MonoBehaviour
     public FSMStates currentState;
     public GameObject[] wanderPoints;
     public GameObject gun;
+    public bool isOnNavMesh;
     Vector3 lastKnownPlayerLocation;
     NavMeshAgent agent;
 
@@ -98,6 +99,7 @@ public class EnemyImproved : MonoBehaviour
                 UpdateDeadState();
                 break;
         }
+        isOnNavMesh = agent.isOnNavMesh;
         
         if (curhealth <= 0 && currentState != FSMStates.dead)
         {

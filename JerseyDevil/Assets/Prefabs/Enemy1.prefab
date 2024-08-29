@@ -622,6 +622,7 @@ MonoBehaviour:
   - {fileID: 3061144577226863336}
   - {fileID: 2619912220671106948}
   gun: {fileID: 6325633188395194355}
+  isOnNavMesh: 0
   playerAnimator: {fileID: 0}
   nextDestination: {x: 0, y: 0, z: 0}
   gamePlayed: 1

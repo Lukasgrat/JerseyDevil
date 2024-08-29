@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +10,9 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.81f;
     public float moveSpeed = 10;
     public float airControl = 10f;
+    public float MAXHEALTH = 100;
     public float health = 100;
+ 
     public float stamina= 100;
     public Slider healthSlider;
     public Slider staminaSlider;
@@ -21,6 +20,15 @@ public class PlayerController : MonoBehaviour
 
 
     bool isZooming = false;
+
+
+    [Header("Armor Related Attributes")]
+    public float MAXARMOR = 50;
+    float armor;
+    public Slider armorSlider;
+    public float armorRecoveryRate;
+    public float armorStartRecoverTime;
+    float armorRecoveryTimer;
 
     [Header("Death Related Atttributes")]
     public float deathTimer = 2f;
@@ -31,6 +39,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        armor = MAXARMOR;
+        armorRecoveryTimer = 0f;
     }
 
     // Update is called once per frame
@@ -91,7 +101,20 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+        ArmorLogic();
     }
+
+
+    private void ArmorLogic() 
+    {
+        armorRecoveryTimer = Mathf.Max(armorRecoveryTimer - Time.deltaTime, 0);
+        if (armorRecoveryTimer == 0) 
+        {
+            armor = Mathf.Min(MAXARMOR, armor + armorRecoveryRate * Time.deltaTime);
+            armorSlider.value = armor / MAXARMOR;
+        }
+    }
+
 
 
     /// <summary>
@@ -107,14 +130,32 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        health = Mathf.Clamp(health, 0, 100);
-        healthSlider.value = health;
-        if (health <= 0)
+        if (armor == 0)
         {
-            health = 0;
+            health -= damage;
+            health = Mathf.Clamp(health, 0, 100);
+            healthSlider.value = health / MAXHEALTH;
+            if (health <= 0)
+            {
+                health = 0;
 
+            }
+            armorRecoveryTimer = armorStartRecoverTime * 2;
         }
+        else 
+        {
+
+            armor = Mathf.Max(0, armor - damage);
+            if (armor == 0)
+            {
+                armorRecoveryTimer = armorStartRecoverTime * 2;
+            }
+            else 
+            {
+                armorRecoveryTimer = armorStartRecoverTime;
+            }
+        }
+        armorSlider.value = armor / MAXARMOR;
     }
 
     public void sendZoomingSignal(bool curZoom) 

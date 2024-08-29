@@ -123,7 +123,7 @@ public class PlayerShooting : MonoBehaviour
             cooldownDynamiteTimer = coolDownDynamiteTime;
             newDynamite.GetComponent<Rigidbody>().AddRelativeTorque(Vector3.right * 20);
         }
-        dynamiteCooldown.value = cooldownDynamiteTimer / coolDownDynamiteTime;
+        dynamiteCooldown.value = 1- (cooldownDynamiteTimer / coolDownDynamiteTime);
 
     }
 
